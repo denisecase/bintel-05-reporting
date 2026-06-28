@@ -1,0 +1,60 @@
+# ============================================================
+# CITATION.cff (How to cite this project)
+# ============================================================
+
+# REQ.UNIVERSAL: Professional open projects SHOULD include this file.
+# WHY: Support correct citation and attribution.
+# ALT: Internal or private repositories may omit citation metadata.
+# CUSTOM: Update author, repository, license, and keyword fields as needed.
+# USAGE: See https://citation-file-format.github.io/ for details.
+
+cff-version: "1.2.0"
+type: software
+
+title: "ml-05-ensembles"
+version: "0.1.0"
+date-released: "2026-06-16"
+
+authors:
+  - family-names: Case
+    given-names: Denise M.
+    orcid: "https://orcid.org/0000-0001-6165-7389"
+    affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
+
+repository-code: "https://github.com/denisecase/ml-05-ensembles"
+url: "https://github.com/denisecase/ml-05-ensembles"
+license: MIT
+
+abstract: >
+  Machine learning project.
+  Learn to combine models using ensemble methods,
+  train random forests and gradient boosting models,
+  interpret feature importance, and tune key hyperparameters.
+
+keywords:
+  - data analytics
+  - notebooks
+  - machine learning
+  - ensemble-methods
+  - random-forest
+  - gradient-boosting
+  - computer-science-education
+  - data-analytics-education
+  - professional-python
+  - reproducible-workflows
+  - ci-cd
+  - github-actions
+  - software-quality
+  - professional-practice
+  - python
+  - jupyter
+  - pandas
+  - scikit-learn
+  - git
+  - github
+  - open-source
+  - uv
+  - ruff
+  - zensical
+
+message: "If using this work, please cite it as described in this file."

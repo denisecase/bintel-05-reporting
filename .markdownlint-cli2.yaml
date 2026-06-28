@@ -1,0 +1,88 @@
+# ============================================================
+# .markdownlint-cli2.yaml (ALL-COURSE-PY-SRC-REPOS)
+# ============================================================
+# Updated: 2026-06-27
+#
+# WHY: Check authored Markdown while ignoring generated output,
+# dependency directories, virtual environments, caches, and build artifacts.
+# REQ: Markdown lint should check source documentation, not generated docs,
+# dependency trees, coverage output, or runtime artifacts.
+#
+# Run with:
+# npx markdownlint-cli2 --fix
+
+# === Authored Markdown inputs ===
+
+globs:
+  - "**/*.md"
+
+# === Generated, dependency, cache, and non-source ignores ===
+
+ignores:
+  # WHY: Virtual environments and dependency trees are not authored Markdown.
+  - ".venv/**"
+  - "**/.venv/**"
+  - "node_modules/**"
+  - "**/node_modules/**"
+
+  # WHY: Build and distribution output is generated.
+  - "build/**"
+  - "**/build/**"
+  - "dist/**"
+  - "**/dist/**"
+  - "site/**"
+  - "**/site/**"
+
+  # WHY: Tool caches and coverage output are generated.
+  - ".mypy_cache/**"
+  - "**/.mypy_cache/**"
+  - ".nox/**"
+  - "**/.nox/**"
+  - ".pytest_cache/**"
+  - "**/.pytest_cache/**"
+  - ".pyright/**"
+  - "**/.pyright/**"
+  - ".ruff_cache/**"
+  - "**/.ruff_cache/**"
+  - ".tox/**"
+  - "**/.tox/**"
+  - ".uv-cache/**"
+  - "**/.uv-cache/**"
+  - "htmlcov/**"
+  - "**/htmlcov/**"
+
+  # WHY: Extensionless repository metadata files are not authored Markdown.
+  - "LICENSE"
+  - "CODEOWNERS"
+  - ".github/CODEOWNERS"
+  - "**/CODEOWNERS"
+  - "**/.github/CODEOWNERS"
+
+# === Markdown lint defaults ===
+
+config:
+  # WHY: Enable default rules as a stable baseline for authored Markdown.
+  default: true
+
+  # === Line length ===
+
+  MD013:
+    # WHY: Allow longer lines for course repos.
+    # CUSTOM: Try setting this to 100 as you gain experience.
+    line_length: 200
+    # WHY: Long headings can be necessary for clarity and SEO.
+    headings: false
+    # WHY: Long table cells can be necessary for readability and completeness.
+    tables: false
+    # WHY: Long lines in code blocks can be necessary for accurate examples.
+    code_blocks: false
+
+  # === Document structure ===
+
+  # WHY: Allow multiple top-level headings in README and documentation index files.
+  MD025: false
+
+  # === Inline HTML ===
+
+  # WHY: Allow inline HTML for course repos.
+  MD033: false

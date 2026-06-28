@@ -1,0 +1,162 @@
+# ============================================================
+# pyproject.toml (Python project configuration)
+# ============================================================
+# REQ.PYTHON: Python projects MUST include pyproject.toml as the single source of truth.
+# WHY: Centralizes project configuration.
+# CUSTOM: Update identity and build tool src folders.
+
+# ============================================================
+# SECTION 1: PROJECT IDENTITY (name, version, CUSTOM dependencies)
+# ============================================================
+
+[project]
+name = "ml-05-ensembles" # CUSTOM: Package distribution name (use lowercase and dashes).
+readme = "README.md"
+requires-python = ">=3.14"
+version = "0.1.0"
+
+dependencies = [
+    "datafun-toolkit", # logging
+    "ipykernel", # notebooks
+    "ipython",   # notebooks
+    "nbconvert", # execute notebooks headlessly
+    "nbqa",      # run linters and formatters on notebooks
+    "numpy",     # numerical computing (sklearn/pandas dependency, explicit is cleaner)
+    "pandas",    # tabular data manipulation
+    "scikit-learn", # machine learning library
+    "seaborn",   # statistical data visualization built on matplotlib
+    "matplotlib" # plotting library for static, animated, and interactive visualizations in Python
+]
+
+[project.optional-dependencies]
+dev = [
+    # WHY: Only used during development, not required for running the package.
+    "pre-commit", # code formatting and linting
+    "pyright",    # static type checking
+    "pytest",     # testing framework
+    "pytest-cov", # test coverage
+    "ruff",       # linting and formatting
+]
+
+docs = [
+    # WHY: Only needed for building documentation, not required for running the package.
+    "mkdocstrings-python", # automatic API documentation from docstrings
+    "zensical", # fast and minimal static site generator for documentation
+]
+
+# ============================================================
+# SECTION 2: TOOL CONFIGURATION (Professional basics)
+# ============================================================
+
+# === PYRIGHT: COURSE REPOSITORIES ===
+
+[tool.pyright]
+# WHY: "basic" catches bugs such as undefined names, bad imports, obvious
+# mismatches without being too demanding.
+typeCheckingMode = "basic"
+
+# WHY: Check package source and tests, nothing else.
+include = ["src", "tests"]
+
+# WHY: Resolve import package from src/ even before an editable install,
+# so a src layout doesn't produce a false "import could not be resolved".
+extraPaths = ["src"]
+
+# WHY: Keep known folders that are generated, cached, virtualenv,
+# build, and documentation site output out of type-check scope.
+# Same as Ruff exclude list.
+exclude = [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/.*",
+    ".venv",
+    "build",
+    "dist",
+    "site",
+    "*.egg-info",
+]
+
+# WHY: Match the course Python target so version-specific inference is correct.
+pythonVersion = "3.14"
+
+# === PYTEST (VERIFY LOGIC) ===
+
+[tool.pytest.ini_options]
+# WHY: Ensure tests are discoverable and coverage is visible.
+minversion = "9.0"
+testpaths = ["tests"]
+addopts = " --cov=src --cov-report=term-missing"
+
+# === RUFF (PYTHON FORMATTING AND LINTING) ===
+
+[tool.ruff]
+# WHY: Ruff provides fast linting and formatting with deterministic output.
+exclude = [
+    ".eggs",
+    "*.egg-info",
+    ".ruff_cache",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "site",
+]
+line-length = 88 # WHY: PEP 8 standard line length, wrap when possible.
+preview = false # WHY: Stable features only; avoid preview features.
+target-version = "py314" # WHY: Match latest supported Python version.
+unsafe-fixes = false # WHY: Avoid potentially unsafe automatic fixes.
+
+[tool.ruff.format]
+# WHY: Formatter choices should be stable to keep diffs small and predictable.
+indent-style = "space" # See also .gitattributes for indent style.
+line-ending = "auto" # Match existing files and let .gitattributes handle it.
+quote-style = "preserve" # Preserve existing quote styles to minimize churn.
+
+[tool.ruff.lint]
+# WHY: Professional baseline rules without requiring advanced refactors.
+select = [
+    "E",   # Basic syntax and structural correctness
+    "F",   # Undefined names and unused imports
+    "W",   # Warnings that catch easy issues early
+    "I",   # Deterministic import ordering
+    "UP",  # Modern Python constructs
+    "B",   # Common bug patterns
+    # "PTH", # Prefer pathlib patterns
+]
+ignore = [
+  "E501", # Final line length handled by formatter
+]
+
+[tool.ruff.lint.isort]
+# WHY: Ordering imports helps keep code diffs (differences) readable.
+force-sort-within-sections = true
+
+[tool.ruff.lint.per-file-ignores]
+# WHY: Some files MUST NOT undergo linting or automated fixes.
+"**/__init__.py" = ["D104", "F401"]
+"tests/**/*.py" = ["D", "B018", "B011","S101"]
+"src/**/py.typed" = ["ALL"]
+"**/*.log" = ["ALL"]
+
+# === CHOOSE PROJECT DOC STYLE ===
+
+[tool.ruff.lint.pydocstyle]
+# REQ: Google style is the project-wide docstring convention.
+convention = "google"
+
+# ============================================================
+# SECTION 3: BUILD SYSTEM (boilerplate; CUSTOM src/ agreement)
+# ============================================================
+#
+# REQ.PROJECT: A build system MUST be declared for package discovery and publishing.
+# REQ.STRUCTURE: All importable code MUST live under src/.
+# WHY src/ layout: Prevents accidental imports from the repo root;
+#     ensures consistent behavior across IDEs, tests, CI, and PyPI.
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[tool.hatch.build.targets.wheel]
+# CUSTOM: Must match src/ folders.
+packages = ["src/bizintel"]  # REQ.PACKAGES: Discovery rooted at src/.
