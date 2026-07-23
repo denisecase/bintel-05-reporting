@@ -43,7 +43,7 @@ jobs:
       # === BASIC CHECKS ===
 
       - name: B1) Run Lychee link checker
-        uses: lycheeverse/lychee-action@v2.8.0
+        uses: lycheeverse/lychee-action@v2.9.0
         with:
           args: >
             --config .github/lychee.toml
