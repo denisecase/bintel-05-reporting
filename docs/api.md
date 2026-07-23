@@ -7,7 +7,7 @@ It becomes more useful as we gain experience.
 
 ::: bizintel
 
-::: bizintel.app_case
+::: bizintel.olap_case
     options:
       members: true
       show_if_no_docstring: true

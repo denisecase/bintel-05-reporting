@@ -3,89 +3,113 @@
 Use this page to record terms and ideas that help you understand
 professional analytics projects.
 
-This project covers ensemble methods: combining multiple models
-to produce better predictions than any single model alone.
+This project covers OLAP reporting:
+querying the data warehouse using slice, dice, and drilldown operations.
 
 Pro-tip: Expand the VS Code **Outline** view (below the navigator on the right)
 to see this file organization at-a-glance.
 
-## Ensemble Methods
+## OLAP Concepts
 
-### ensemble method
+### OLAP
 
-An ensemble method combines the predictions of multiple models
-to produce a single, more reliable result.
-Ensembles often outperform any individual model because different models
-make different errors, and combining them averages those errors out.
+OLAP (Online Analytical Processing) is an approach to analyzing
+multidimensional business data at different levels of detail.
+OLAP supports slice, dice, drilldown, and rollup operations
+used in BI reporting.
 
-### bagging
+### slice
 
-Bagging (bootstrap aggregating) trains many models independently
-on different random samples of the training data
-and combines their predictions by majority vote or averaging.
-Random forests use bagging.
+A slice filters data to one value of a single dimension.
+For example, filtering sales to only the Electronics category
+is a slice operation.
+Slicing isolates a subset for focused analysis.
 
-### boosting
+### dice
 
-Boosting trains models sequentially, where each new model focuses on
-the examples the previous ones got wrong.
-The final prediction combines all models weighted by their accuracy.
-Gradient boosting uses this approach.
+Dicing filters data across two or more dimensions simultaneously.
+For example, filtering by both product category and customer region
+is a dice operation.
+Dicing reveals which combinations of dimensions drive performance.
 
-### random forest
+### drilldown
 
-A random forest is an ensemble of decision trees trained on random
-subsets of the data and random subsets of the features.
-Predictions are made by majority vote across all trees.
-Random forests are robust, accurate, and resistant to overfitting.
+Drilldown moves from a high-level summary to more granular detail.
+For example, moving from annual sales totals to monthly totals
+is a drilldown operation.
+Drilldown helps identify which time periods or subcategories
+explain a trend.
 
-### gradient boosting
+### rollup
 
-Gradient boosting builds trees sequentially, each one correcting
-the residual errors of the previous.
-It often achieves high accuracy but requires careful tuning
-to avoid overfitting.
+Rollup is the opposite of drilldown.
+It moves from granular detail to a higher-level summary.
+For example, aggregating daily sales into monthly totals is a rollup.
 
-### feature importance
+### data cube
 
-Feature importance is a score that measures how much each input feature
-contributed to a model's predictions.
-Tree-based models compute this automatically.
-High importance means the feature was used frequently and effectively
-to split the data.
+A data cube is a multidimensional view of data organized by dimensions and metrics.
+It allows analysts to quickly pivot, slice, and dice large datasets.
+A data cube can be pre-computed or generated on the fly from a warehouse.
 
-## Tuning
+### pivot table
 
-### hyperparameter
+A pivot table reorganizes data by placing dimension values as row and column headers
+and aggregated metrics as cell values.
+It is a common way to compare performance across two dimensions at once.
 
-A hyperparameter is a setting that controls how a model is trained,
-set before training begins.
-Examples include the number of trees in a forest,
-the maximum depth of each tree, and the learning rate.
-Choosing good hyperparameters improves model performance.
+## SQL for Reporting
 
-### n_estimators
+### SELECT
 
-`n_estimators` is the hyperparameter that controls how many trees
-are built in a random forest or gradient boosting model.
-More trees generally improve accuracy up to a point,
-after which returns diminish and training slows.
+`SELECT` specifies which columns to return in a query result.
+`SELECT *` returns all columns.
+Good practice is to name only the columns you need.
 
-### max_depth
+### WHERE
 
-`max_depth` controls how deep each decision tree is allowed to grow.
-Shallow trees underfit; very deep trees overfit.
-The right depth depends on the data.
+`WHERE` filters rows based on a condition.
+`WHERE Category = 'Electronics'` returns only Electronics rows.
+`WHERE` can implement a slice by selecting one value
+from a dimension.
 
-### cross-validation
+### GROUP BY
 
-Cross-validation evaluates a model by splitting the data into multiple
-folds, training on some and testing on others, and averaging the results.
-It gives a more reliable estimate of performance than a single train-test split.
+`GROUP BY` organizes rows into groups based on one or more columns
+and allows aggregation functions to be applied to each group.
+`GROUP BY Region` with `SUM(SaleAmount)` gives total sales per region.
 
-### bias-variance tradeoff
+### ORDER BY
 
-The bias-variance tradeoff describes the tension between two types of error.
-High bias means the model is too simple and misses patterns (underfitting).
-High variance means the model is too complex and fits noise (overfitting).
-Ensembles reduce variance while keeping bias low.
+`ORDER BY` sorts query results by one or more columns.
+`ORDER BY TotalSales DESC` sorts results from highest to lowest.
+
+### strftime
+
+`strftime` is a DuckDB function that formats date values as strings.
+`strftime(SaleDate, '%Y-%m')` extracts the year and month from a date.
+It is used to group sales by month for trend analysis.
+
+### subquery
+
+A subquery is a SELECT statement nested inside another SELECT statement.
+It can be used to filter, rank, or compute intermediate results
+before the outer query runs.
+
+## Visualization for Reporting
+
+### seaborn
+
+seaborn is a Python visualization library built on matplotlib.
+It provides high-level chart functions with sensible defaults.
+`sns.barplot()` and `sns.lineplot()` are used throughout this course.
+
+### bar chart
+
+A bar chart compares values across categories using rectangular bars.
+It is the most common chart for comparing totals by dimension.
+
+### line chart
+
+A line chart shows values over time by connecting data points with a line.
+It is the standard chart for visualizing trends and time series.

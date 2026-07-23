@@ -27,6 +27,7 @@
     // ============================================================
     // === DATA FILES AND CONFIGURATION ===
     // ============================================================
+    "chuckjonas.duckdb", // DuckDB integration for viewing and querying data files
     "redhat.vscode-yaml", // YAML syntax, validation, formatting
     "tamasfe.even-better-toml", // TOML syntax, validation (for pyproject.toml)
     "mechatroner.rainbow-csv", // Color-code CSV columns for readability

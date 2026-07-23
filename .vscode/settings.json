@@ -1,14 +1,14 @@
 // ============================================================
 // .vscode/settings.json
 // ============================================================
-// Updated 2026-06-27
+// Updated 2026-06-28
 // NOTE: Comments are not allowed in standard JSON files,
 // but Microsoft allows them in their .vscode config files.
 {
   "editor.formatOnSave": false,
   // WHY: Tell VS Code to use this repo's isolated uv environment.
   // CROSS-PLATFORM: Point to the .venv folder, not an OS-specific executable.
-  // OBS: uv creates .venv when students run uv sync.
+  // OBS: uv creates .venv when we run uv sync.
   // OBS: This helps prevent VS Code from guessing Homebrew Python,
   // Apple Python, Windows Store Python, system Python, or another local interpreter.
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
@@ -39,5 +39,22 @@
       ".github/workflows/*.yml",
       ".github/workflows/*.yaml"
     ]
-  }
+  },
+  "workbench.editorAssociations": {
+    "*.copilotmd": "vscode.markdown.preview.editor",
+    "*.parquet": "duckdb.dataFileViewer",
+    "*.csv": "duckdb.dataFileViewer",
+    "*.tsv": "duckdb.dataFileViewer",
+    "*.xlsx": "duckdb.dataFileViewer"
+  },
+  "duckdb.databases": [
+    {
+      "alias": "smart_sales",
+      "type": "file",
+      "path": "./artifacts/smart_sales.duckdb",
+      "readOnly": true,
+      "attached": false
+    }
+  ],
+  "duckdb.defaultDatabase": "smart_sales"
 }

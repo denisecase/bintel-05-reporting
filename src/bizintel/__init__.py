@@ -1,1 +1,1 @@
-"""ML Studio package."""
+"""Bintel package."""

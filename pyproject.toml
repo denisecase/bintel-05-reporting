@@ -10,22 +10,19 @@
 # ============================================================
 
 [project]
-name = "ml-05-ensembles" # CUSTOM: Package distribution name (use lowercase and dashes).
+name = "bintel-05-reporting" # CUSTOM: Package distribution name (use lowercase and dashes).
 readme = "README.md"
 requires-python = ">=3.14"
 version = "0.1.0"
 
 dependencies = [
     "datafun-toolkit", # logging
-    "ipykernel", # notebooks
-    "ipython",   # notebooks
-    "nbconvert", # execute notebooks headlessly
-    "nbqa",      # run linters and formatters on notebooks
-    "numpy",     # numerical computing (sklearn/pandas dependency, explicit is cleaner)
-    "pandas",    # tabular data manipulation
-    "scikit-learn", # machine learning library
-    "seaborn",   # statistical data visualization built on matplotlib
-    "matplotlib" # plotting library for static, animated, and interactive visualizations in Python
+    "duckdb",          # analytical database
+    "numpy",           # numerical computing
+    "pandas",          # tabular data manipulation
+    # "pyspark[sql]",    # Apache Spark DataFrames and Spark SQL TODO: UNCOMMENT IF USING SPARK
+    "seaborn",         # statistical data visualization
+    "matplotlib",      # plotting
 ]
 
 [project.optional-dependencies]

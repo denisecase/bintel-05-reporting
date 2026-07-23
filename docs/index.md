@@ -37,69 +37,53 @@ Was it easy, or surprisingly challenging and why do you think so?
 
 ## Phase 5. Custom Project
 
-Describe your custom project and how you made your modeling decisions.
-
-Be specific about what changed from the example project.
+Describe your custom OLAP reporting work.
 
 ### Basis and Data
 
-Describe the dataset, input, or example you started with.
+Describe the data warehouse you queried.
 
 Include:
 
-- The original example dataset or input
-- The data source
-- Why you chose it, kept it, or changed it
-- Any important limitations or assumptions
+- The warehouse tables and what each contains
+- The business questions you chose to investigate
+- Why those questions matter to a business
 
-### Modeling Approach
+### OLAP Operations
 
-Describe the problem type and modeling approach for this project.
-
-Include:
-
-- Is this supervised or unsupervised and how do you know
-- Is this classification, regression, clustering, recommendation, forecasting, or another type of ML task
-- What kind of target works well for this approach
-- Why your selected model or method is appropriate
-
-### Target
-
-Describe the example target variable.
-
-Then describe your chosen target variable.
-
-Explain how your target choice changes the modeling approach, interpretation, or evaluation.
-
-### Features
-
-Describe the example features.
-
-Then describe the features you used to predict your target.
-
-Explain what you changed, added, removed, or kept and why.
-
-### Evaluation and Results
-
-Describe how you evaluated your model.
+Describe the slice, dice, rollup, and drilldown operations you implemented.
 
 Include:
 
-- The metric or evidence you used
-- The main result
-- Whether the result was useful, interesting, surprising, or disappointing
-- Any weakness, limitation, or next improvement
+1. Slice. What dimension you chose for your **slice** and why
+2. Dice. What two dimensions you chose for your **dice** and why
+3. Drilldown. What level of **drilldown** you implemented and what it revealed
+4. Rollup. What level of **rollup** you implemented and what higher-level summary it produced
+5. OS. Your operating system
+6. Reporting Tool. Which reporting path you used: Power BI or Apache Spark
+7. Custom Reporting. What **custom operation** or **query** you added beyond the example
+
+### Findings
+
+Describe what your OLAP analysis revealed.
+
+Include:
+
+1. Slice. What your **slice** showed about that dimension
+2. Dice. What your **dice** revealed about the combination of dimensions
+3. Drilldown. What the **drilldown** exposed that the summary view missed
+4. Rollup. What the **rollup** revealed at a higher summary level
+5. Results. Any surprising or counterintuitive results
 
 ### Summary
 
-Summarize your custom project.
+Summarize your custom reporting work.
 
-Include:
+Include specifics showcasing your analysis:
 
-- How you implemented your custom model
-- What results you got
-- What you learned
-- How well you exercised the skills covered in this project
-- What kinds of real problems you could apply these skills to in the future
+- What you implemented beyond the example
+- What business insights your queries produced
+- What you learned about OLAP reporting
+- What kinds of real business decisions this analysis could support
 
-Display at least one image or screenshot showing your work.
+Display charts, visuals, screenshots showcasing your OLAP results.

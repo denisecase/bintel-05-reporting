@@ -11,9 +11,9 @@
 cff-version: "1.2.0"
 type: software
 
-title: "ml-05-ensembles"
+title: "bintel-05-reporting"
 version: "0.1.0"
-date-released: "2026-06-16"
+date-released: "2026-07-23"
 
 authors:
   - family-names: Case
@@ -21,25 +21,24 @@ authors:
     orcid: "https://orcid.org/0000-0001-6165-7389"
     affiliation: "Northwest Missouri State University, School of Computer Science and Information Systems, Maryville, MO, USA"
 
-repository-code: "https://github.com/denisecase/ml-05-ensembles"
-url: "https://github.com/denisecase/ml-05-ensembles"
+repository-code: "https://github.com/denisecase/bintel-05-reporting"
+url: "https://github.com/denisecase/bintel-05-reporting"
 license: MIT
 
 abstract: >
-  Machine learning project.
-  Learn to combine models using ensemble methods,
-  train random forests and gradient boosting models,
-  interpret feature importance, and tune key hyperparameters.
+  Business intelligence project.
+  Learn to query a smart sales data warehouse using OLAP operations
+  including slice, dice, and drilldown
+  to generate business intelligence reports and visualizations.
 
 keywords:
-  - data analytics
-  - notebooks
-  - machine learning
-  - ensemble-methods
-  - random-forest
-  - gradient-boosting
-  - computer-science-education
-  - data-analytics-education
+  - business-intelligence
+  - olap
+  - reporting
+  - slice-dice-drilldown
+  - data-warehouse
+  - sqlite
+  - smart-sales
   - professional-python
   - reproducible-workflows
   - ci-cd
@@ -47,9 +46,10 @@ keywords:
   - software-quality
   - professional-practice
   - python
-  - jupyter
   - pandas
-  - scikit-learn
+  - sql
+  - matplotlib
+  - seaborn
   - git
   - github
   - open-source
