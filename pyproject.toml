@@ -23,6 +23,7 @@ dependencies = [
     # "pyspark[sql]",    # Apache Spark DataFrames and Spark SQL TODO: UNCOMMENT IF USING SPARK
     "seaborn",         # statistical data visualization
     "matplotlib",      # plotting
+    "pyspark[sql]>=4.2.0",
 ]
 
 [project.optional-dependencies]

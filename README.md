@@ -50,10 +50,7 @@ Then, follow the path by operating system:
 
 - **Windows:** Load the generated reporting data into Power BI Desktop.
 - **macOS or Linux:** Run the Apache Spark OLAP example.
-
-  ```shell
-  uv run python -m bizintel.olap_spark_case
-  ```
+- see more information below
 
 ## Instructions (pro-analytics-02)
 
@@ -126,17 +123,28 @@ uvx pre-commit run --all-files
 # repeat if changes were made
 uvx pre-commit run --all-files
 
-# Optional: run the main pipeline app
+# OPTIONAL: run the main pipeline app
+# This has been adjusted to call the functions
+# from this module...we'll do this again later.
 uv run python -m bizintel.app_case
 
-# run the DuckDB OLAP reporting example
+# PART 1. EVERYONE: run the DuckDB OLAP reporting example
 uv run python -m bizintel.olap_case
 
-# macOS or Linux: run the Spark OLAP example
+# PART 2. macOS or Linux: run the Spark OLAP example
+#  1.  Add PySpark with Spark SQL support dependency
+uv add "pyspark[sql]"
+#  2. Restore the environment
+uv sync --extra dev --extra docs --upgrade
+#  3. Run the spark example
 uv run python -m bizintel.olap_spark_case
 
-# Windows: open Power BI Desktop and load
-# data/reporting/sales_reporting_case.csv
+# PART 2. Windows: use Power BI Desktop
+#  1. Open Power BI Desktop.
+#  2. Select Home > Get data > Text/CSV.
+#  3. Browse to your chosen file: e.g., for the example: data/reporting/sales_reporting_case.csv
+#  4. Select Open.
+#  5. Review the data preview, and then select Load.
 
 # run common chores
 uv run ruff format .

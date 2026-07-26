@@ -1,0 +1,159 @@
+2026-07-26 09:10:56 | INFO | BI | === RUN START ===
+2026-07-26 09:10:56 | INFO | BI | project=BI
+2026-07-26 09:10:56 | INFO | BI | repo_dir=bintel-05-reporting
+2026-07-26 09:10:56 | INFO | BI | python=3.14.0
+2026-07-26 09:10:56 | INFO | BI | os=Windows 11
+2026-07-26 09:10:56 | INFO | BI | shell=powershell
+2026-07-26 09:10:56 | INFO | BI | cwd=.
+2026-07-26 09:10:56 | INFO | BI | github_actions=False
+2026-07-26 09:10:56 | INFO | BI | ========================
+2026-07-26 09:10:56 | INFO | BI | START main()
+2026-07-26 09:10:56 | INFO | BI | ========================
+2026-07-26 09:10:56 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-26 09:10:56 | INFO | BI | Reporting data: = data\reporting\sales_reporting_case.csv
+2026-07-26 09:10:56 | INFO | BI | === RUN START ===
+2026-07-26 09:10:56 | INFO | BI | project=BI
+2026-07-26 09:10:56 | INFO | BI | repo_dir=bintel-05-reporting
+2026-07-26 09:10:56 | INFO | BI | python=3.14.0
+2026-07-26 09:10:56 | INFO | BI | os=Windows 11
+2026-07-26 09:10:56 | INFO | BI | shell=powershell
+2026-07-26 09:10:56 | INFO | BI | cwd=.
+2026-07-26 09:10:56 | INFO | BI | github_actions=False
+2026-07-26 09:10:56 | INFO | BI | ========================
+2026-07-26 09:10:56 | INFO | BI | START main()
+2026-07-26 09:10:56 | INFO | BI | ========================
+2026-07-26 09:10:56 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-26 09:10:56 | INFO | BI | Reporting data: = data\reporting\sales_reporting_case.csv
+2026-07-26 09:10:56 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-26 09:10:56 | INFO | BI | CALL a function to verify the warehouse........
+2026-07-26 09:10:56 | INFO | BI | Verifying required warehouse tables
+2026-07-26 09:10:56 | INFO | BI |   PASS: All required warehouse tables are available
+2026-07-26 09:10:56 | INFO | BI | CALL a function to create the reporting view........
+2026-07-26 09:10:56 | INFO | BI | Creating the sales_reporting view
+2026-07-26 09:10:56 | INFO | BI |   sales_reporting view created
+2026-07-26 09:10:56 | INFO | BI | CALL a function to export reporting data........
+2026-07-26 09:10:56 | INFO | BI | Exporting the reporting-ready dataset
+2026-07-26 09:10:57 | INFO | BI |   Exported 2392 reporting rows
+2026-07-26 09:10:57 | INFO | BI | Reporting data: = data\reporting\sales_reporting_case.csv
+2026-07-26 09:10:57 | INFO | BI | CALL a function to slice sales by region........
+2026-07-26 09:10:57 | INFO | BI | OLAP slice: sales for Region = 'East'
+2026-07-26 09:10:57 | INFO | BI |   Categories in the slice: 4
+2026-07-26 09:10:57 | INFO | BI | CALL a function to plot the slice result........
+2026-07-26 09:10:57 | INFO | BI | Creating chart: Sales by Category in East
+2026-07-26 09:10:57 | INFO | BI | CALL a function to dice sales by dimensions........
+2026-07-26 09:10:57 | INFO | BI | OLAP dice: Regions = ('East', 'West'); Categories = ('Clothing', 'Electronics')
+2026-07-26 09:10:57 | INFO | BI |   Region-category combinations: 4
+2026-07-26 09:10:57 | INFO | BI | CALL a function to plot the dice result........
+2026-07-26 09:10:57 | INFO | BI | Creating chart: Sales for Selected Regions and Categories
+2026-07-26 09:10:57 | INFO | BI | CALL a function to roll up sales by time........
+2026-07-26 09:10:57 | INFO | BI | OLAP roll-up: Month -> Quarter -> Year -> All Years
+2026-07-26 09:10:57 | INFO | BI |   Roll-up rows returned: 20
+2026-07-26 09:10:57 | INFO | BI | CALL a function to plot quarterly roll-up results........
+2026-07-26 09:10:57 | INFO | BI | Creating chart: Quarterly Sales Roll-Up
+2026-07-26 09:10:57 | INFO | BI | CALL a function to select a drill-down year........
+2026-07-26 09:10:57 | INFO | BI | Finding the latest sales year for drill-down
+2026-07-26 09:10:57 | INFO | BI |   Selected drill-down year: 2025
+2026-07-26 09:10:57 | INFO | BI | CALL a function to drill down by time........
+2026-07-26 09:10:57 | INFO | BI | OLAP drill-down: Year 2025 -> Quarter -> Month
+2026-07-26 09:10:57 | INFO | BI |   Drill-down rows returned: 8
+2026-07-26 09:10:57 | INFO | BI | CALL a function to plot monthly drill-down results........
+2026-07-26 09:10:57 | INFO | BI | Creating chart: Monthly Sales Drill-Down for 2025
+2026-07-26 09:10:57 | INFO | BI | CALL a function to summarize OLAP findings........
+2026-07-26 09:10:57 | INFO | BI | ========================
+2026-07-26 09:10:57 | INFO | BI | SUMMARY
+2026-07-26 09:10:57 | INFO | BI | ========================
+2026-07-26 09:10:57 | INFO | BI | Slice: In East, the leading category is Office ($456,342.94)
+2026-07-26 09:10:57 | INFO | BI | Dice: The strongest selected combination is East / Electronics ($218,291.81)
+2026-07-26 09:10:57 | INFO | BI | Roll-up: Total sales across all years are $3,673,389.85
+2026-07-26 09:10:57 | INFO | BI | Drill-down: The strongest month in 2025 is 2025-05 ($369,056.60)
+2026-07-26 09:10:57 | INFO | BI | ========================
+2026-07-26 09:10:57 | INFO | BI | ANALYST NOTES:
+2026-07-26 09:10:57 | INFO | BI | Use slice to focus on one dimension value.
+2026-07-26 09:10:57 | INFO | BI | Use dice to investigate a selected multidimensional subset.
+2026-07-26 09:10:57 | INFO | BI | Use roll-up to move from detail to broader summaries.
+2026-07-26 09:10:57 | INFO | BI | Use drill-down to investigate the detail behind a summary.
+2026-07-26 09:10:57 | INFO | BI | ========================
+2026-07-26 09:10:57 | INFO | BI | CALL a function to show charts........
+2026-07-26 09:11:02 | INFO | BI | Closed DuckDB connection
+2026-07-26 09:11:02 | INFO | BI | Workflow complete
+2026-07-26 09:11:02 | INFO | BI | CLOSE chart windows to continue.
+2026-07-26 09:11:02 | INFO | BI | Terminate this process with CTRL+c as needed.
+2026-07-26 09:11:02 | INFO | BI | ========================
+2026-07-26 09:11:02 | INFO | BI | Executed successfully!
+2026-07-26 09:11:02 | INFO | BI | ========================
+2026-07-26 09:11:02 | INFO | BI | App workflow complete
+2026-07-26 09:11:02 | INFO | BI | CLOSE chart windows to continue.
+2026-07-26 09:11:02 | INFO | BI | Terminate this process with CTRL+c as needed.
+2026-07-26 09:11:02 | INFO | BI | ========================
+2026-07-26 09:11:02 | INFO | BI | Executed successfully!
+2026-07-26 09:11:02 | INFO | BI | ========================
+2026-07-26 09:11:54 | INFO | BI | === RUN START ===
+2026-07-26 09:11:54 | INFO | BI | project=BI
+2026-07-26 09:11:54 | INFO | BI | repo_dir=bintel-05-reporting
+2026-07-26 09:11:54 | INFO | BI | python=3.14.0
+2026-07-26 09:11:54 | INFO | BI | os=Windows 11
+2026-07-26 09:11:54 | INFO | BI | shell=powershell
+2026-07-26 09:11:54 | INFO | BI | cwd=.
+2026-07-26 09:11:54 | INFO | BI | github_actions=False
+2026-07-26 09:11:54 | INFO | BI | ========================
+2026-07-26 09:11:54 | INFO | BI | START main()
+2026-07-26 09:11:54 | INFO | BI | ========================
+2026-07-26 09:11:54 | INFO | BI | Data warehouse: = artifacts\smart_sales.duckdb
+2026-07-26 09:11:54 | INFO | BI | Reporting data: = data\reporting\sales_reporting_case.csv
+2026-07-26 09:11:54 | INFO | BI | Connecting to DuckDB data warehouse........
+2026-07-26 09:11:54 | INFO | BI | CALL a function to verify the warehouse........
+2026-07-26 09:11:54 | INFO | BI | Verifying required warehouse tables
+2026-07-26 09:11:54 | INFO | BI |   PASS: All required warehouse tables are available
+2026-07-26 09:11:54 | INFO | BI | CALL a function to create the reporting view........
+2026-07-26 09:11:54 | INFO | BI | Creating the sales_reporting view
+2026-07-26 09:11:54 | INFO | BI |   sales_reporting view created
+2026-07-26 09:11:54 | INFO | BI | CALL a function to export reporting data........
+2026-07-26 09:11:54 | INFO | BI | Exporting the reporting-ready dataset
+2026-07-26 09:11:54 | INFO | BI |   Exported 2392 reporting rows
+2026-07-26 09:11:54 | INFO | BI | Reporting data: = data\reporting\sales_reporting_case.csv
+2026-07-26 09:11:54 | INFO | BI | CALL a function to slice sales by region........
+2026-07-26 09:11:54 | INFO | BI | OLAP slice: sales for Region = 'East'
+2026-07-26 09:11:54 | INFO | BI |   Categories in the slice: 4
+2026-07-26 09:11:54 | INFO | BI | CALL a function to plot the slice result........
+2026-07-26 09:11:54 | INFO | BI | Creating chart: Sales by Category in East
+2026-07-26 09:11:54 | INFO | BI | CALL a function to dice sales by dimensions........
+2026-07-26 09:11:54 | INFO | BI | OLAP dice: Regions = ('East', 'West'); Categories = ('Clothing', 'Electronics')
+2026-07-26 09:11:54 | INFO | BI |   Region-category combinations: 4
+2026-07-26 09:11:54 | INFO | BI | CALL a function to plot the dice result........
+2026-07-26 09:11:54 | INFO | BI | Creating chart: Sales for Selected Regions and Categories
+2026-07-26 09:11:54 | INFO | BI | CALL a function to roll up sales by time........
+2026-07-26 09:11:54 | INFO | BI | OLAP roll-up: Month -> Quarter -> Year -> All Years
+2026-07-26 09:11:54 | INFO | BI |   Roll-up rows returned: 20
+2026-07-26 09:11:54 | INFO | BI | CALL a function to plot quarterly roll-up results........
+2026-07-26 09:11:54 | INFO | BI | Creating chart: Quarterly Sales Roll-Up
+2026-07-26 09:11:54 | INFO | BI | CALL a function to select a drill-down year........
+2026-07-26 09:11:54 | INFO | BI | Finding the latest sales year for drill-down
+2026-07-26 09:11:54 | INFO | BI |   Selected drill-down year: 2025
+2026-07-26 09:11:54 | INFO | BI | CALL a function to drill down by time........
+2026-07-26 09:11:54 | INFO | BI | OLAP drill-down: Year 2025 -> Quarter -> Month
+2026-07-26 09:11:54 | INFO | BI |   Drill-down rows returned: 8
+2026-07-26 09:11:54 | INFO | BI | CALL a function to plot monthly drill-down results........
+2026-07-26 09:11:54 | INFO | BI | Creating chart: Monthly Sales Drill-Down for 2025
+2026-07-26 09:11:54 | INFO | BI | CALL a function to summarize OLAP findings........
+2026-07-26 09:11:54 | INFO | BI | ========================
+2026-07-26 09:11:54 | INFO | BI | SUMMARY
+2026-07-26 09:11:54 | INFO | BI | ========================
+2026-07-26 09:11:54 | INFO | BI | Slice: In East, the leading category is Office ($456,342.94)
+2026-07-26 09:11:54 | INFO | BI | Dice: The strongest selected combination is East / Electronics ($218,291.81)
+2026-07-26 09:11:54 | INFO | BI | Roll-up: Total sales across all years are $3,673,389.85
+2026-07-26 09:11:54 | INFO | BI | Drill-down: The strongest month in 2025 is 2025-05 ($369,056.60)
+2026-07-26 09:11:54 | INFO | BI | ========================
+2026-07-26 09:11:54 | INFO | BI | ANALYST NOTES:
+2026-07-26 09:11:54 | INFO | BI | Use slice to focus on one dimension value.
+2026-07-26 09:11:54 | INFO | BI | Use dice to investigate a selected multidimensional subset.
+2026-07-26 09:11:54 | INFO | BI | Use roll-up to move from detail to broader summaries.
+2026-07-26 09:11:54 | INFO | BI | Use drill-down to investigate the detail behind a summary.
+2026-07-26 09:11:54 | INFO | BI | ========================
+2026-07-26 09:11:54 | INFO | BI | CALL a function to show charts........
+2026-07-26 09:11:58 | INFO | BI | Closed DuckDB connection
+2026-07-26 09:11:58 | INFO | BI | Workflow complete
+2026-07-26 09:11:58 | INFO | BI | CLOSE chart windows to continue.
+2026-07-26 09:11:58 | INFO | BI | Terminate this process with CTRL+c as needed.
+2026-07-26 09:11:58 | INFO | BI | ========================
+2026-07-26 09:11:58 | INFO | BI | Executed successfully!
+2026-07-26 09:11:58 | INFO | BI | ========================
