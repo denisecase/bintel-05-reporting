@@ -492,9 +492,28 @@ def main() -> None:
     )
 
     # Use the most recent year for the drilldown example.
+    # F.max() returns a Row object, so we call first() to get the first row.
+    # Then use alias() to rename the column to "LatestYear" for easier access.
     selected_year_row = df_reporting.agg(F.max("SalesYear").alias("LatestYear")).first()
 
-    selected_year: int = int(selected_year_row["LatestYear"])
+    # Check if the selected year row is None,
+    # which indicates that there is no reporting data available.
+    # If it is None, raise a ValueError with an appropriate message.
+    if selected_year_row is None:
+        raise ValueError("No reporting data was available.")
+
+    # Extract the latest year from the selected year row.
+    latest_year = selected_year_row["LatestYear"]
+
+    # Check if the latest year is None,
+    # which indicates that there are no sales years in the reporting data.
+    # If it is None, raise a ValueError with an appropriate message.
+    if latest_year is None:
+        raise ValueError("No sales year was found in the reporting data.")
+
+    # Convert the latest year to an integer for further processing.
+    selected_year: int = int(latest_year)
+    LOG.info(f"Selected year for drilldown: {selected_year}")
 
     LOG.info("CALL a function to drill down to monthly sales........")
     df_monthly_spark: DataFrame = drilldown_monthly_sales(
@@ -505,6 +524,9 @@ def main() -> None:
     LOG.info("SHOW the drilldown result........")
     df_monthly_spark.show()
 
+    # df_monthly_spark is a Spark DataFrame, which is not directly compatible with matplotlib.
+    # To plot the data using matplotlib, we need to convert it to a pandas DataFrame.
+    # Use the provided toPandas() method to convert it to a pandas DataFrame.
     df_monthly: pd.DataFrame = df_monthly_spark.toPandas()
 
     LOG.info("CALL a function to plot monthly sales........")
